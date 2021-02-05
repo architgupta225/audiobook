@@ -1,0 +1,17 @@
+import pyttsx3
+import PyPDF2
+
+book = open('OOPS.pdf','rb')
+pdfReader = PyPDF2.PdfFileReader(book)
+pages = pdfReader.numPages
+print(pages)
+speaker = pyttsx3.init()
+n = int(input("Enter the page number:"))
+if n>pages:
+    print("Nothing left")
+else:
+    for num in range(n, pages):
+        page = pdfReader.getPage(7)
+        text = page.extractText()
+        speaker.say(text)
+        speaker.runAndWait()
